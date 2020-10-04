@@ -8,6 +8,10 @@ import "./styles.css";
 
 
 class Report extends Component {
+	goBack = () => {
+		this.props.history.goBack();
+	}
+
     render() {
         return(
             <div id="report">
@@ -15,6 +19,7 @@ class Report extends Component {
             		<div className="arrow">&#10094;</div>
             	</div>
             	<div id="reportContent">
+            		<div id="reportBackButton" onClick={this.goBack}>Back</div> 
             		<div id="reportTitle">Current Query:</div>
 		            <div id="reportHeader">
 		            	<div id="reportHeaderReportText">Report Text</div>

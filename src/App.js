@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 
 //css
 import "./App.css";
@@ -19,7 +21,12 @@ class App extends Component {
         return(
             <div id="app">
                 <div id="appTitle">GMail for Medical Reports</div>
-                <Search />
+                <Router>
+                    <Switch>
+                        <Route exact path='/' component={Search} />
+                        <Route exact path='/report' component={Report} />
+                    </Switch>
+                </Router>
             </div>
         );
     }

@@ -11,17 +11,40 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	width: 10%;
+	width: 5%;
 	flex-wrap: wrap;
 	font-size: 20px;
+}
+
+.searchResultsRowTitle {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 13%;
+	padding-left: 1%;
+	padding-right: 1%;
+	text-decoration: none;
+	color: black;
+}
+
+.searchResultsRowTitleText {
+	display: block;
+	width: 100%;
+	font-size: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	text-align: center;
 }
 
 .searchResultsRowTextContainer {
 	display: flex;
 	align-items: center;
-	width: 64%;
+	width: 54%;
 	padding-left: 1%;
 	padding-right: 1%;
+	text-decoration: none;
+	color: black;
 }
 
 .searchResultsRowText {
@@ -31,6 +54,7 @@
 	white-space: nowrap;
 	overflow: hidden;
 	text-overflow: ellipsis;
+	text-align: center;
 }
 
 .searchResultsRowTags {
