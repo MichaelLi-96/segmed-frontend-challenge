@@ -1,7 +1,23 @@
-#tag {
-	background-color: #53b96a;
+.tag {
 	padding: 5px 15px 5px 15px;
-	border-radius: 25px;
-	font-size: 20px;
+	border-radius: 10px;
+	font-size: 18px;
 	margin: 5px 10px 5px 10px;
+	cursor: pointer;
+}
+
+.tagRedColor {
+	background-color: #e7727d;
+}
+
+.tagYellowColor {
+	background-color: #ffd451;
+}
+
+.tagGreenColor {
+	background-color: #69c17d;
+}
+
+.tagDefaultColor {
+	background-color: #e6e6e6;
 }

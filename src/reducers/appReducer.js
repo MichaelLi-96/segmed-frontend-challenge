@@ -1,4 +1,4 @@
-import { FILTER_CHANGED, REPORTS_CHANGED } from '../actions/types';
+import { FILTER_CHANGED, REPORTS_CHANGED, TAGS_CHANGED } from '../actions/types';
 import { reportsData } from '../assets/reportsData';
 
 const INITIAL_STATE = {
@@ -18,6 +18,11 @@ const appReducer = (state = INITIAL_STATE, action) => {
 			return { 
 				...state,
 				"currentReports": action.payload
+			};
+		case TAGS_CHANGED:
+			return { 
+				...state,
+				"reports": action.payload
 			};
 		default:
 			return state;

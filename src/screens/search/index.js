@@ -22,7 +22,7 @@ class Search extends Component {
 					id={report.id}
 					title={report.title}
 					intro={report.intro}
-					tags={report.tags}
+					activeTags={report.activeTags}
 				/>
 			);
 		}

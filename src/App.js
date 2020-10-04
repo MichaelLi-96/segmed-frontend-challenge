@@ -22,7 +22,7 @@ class App extends Component {
 
     render() {
         return(
-            <div id="app">
+            <div id="app" tabIndex="0">
                 <div id="appTitle">GMail for Medical Reports</div>
                 <Router>
                     <Switch>

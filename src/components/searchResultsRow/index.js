@@ -8,17 +8,18 @@ import Tag from "../tag";
 import "./styles.css";
 
 class searchResultsRow extends Component {
-	renderTags = () => {
-		const tags = this.props.tags;
+	renderActiveTags = () => {
+		const activeTags = this.props.activeTags;
 		const results = [];
-		for(let i = 0; i < tags.length; i++) {
+		for(let i = 0; i < activeTags.length; i++) {
 			results.push(
 				<Tag
-					label="#good"
+					key={i}
+					label={activeTags[i]}
 				/>
 			)
 		}
-		return results;
+		return results.length === 0 ? "No tags active..." : results;
 	}
 
     render() {
@@ -54,9 +55,7 @@ class searchResultsRow extends Component {
 					<div className="searchResultsRowText">{intro}</div>
             	</Link>
             	<div className="searchResultsRowTags">
-            		<Tag label="#good" />
-            		<Tag label="#good" />
-					<Tag label="#good" />
+            		{this.renderActiveTags()}
             	</div>
             </div>
         );

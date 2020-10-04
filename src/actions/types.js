@@ -1,2 +1,3 @@
 export const FILTER_CHANGED = 'FILTER_CHANGED';
 export const REPORTS_CHANGED = 'REPORTS_CHANGED';
+export const TAGS_CHANGED = 'TAGS_CHANGED';
