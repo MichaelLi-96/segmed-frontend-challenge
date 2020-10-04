@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { MdSearch } from "react-icons/md";
 
 //components
-import SearchResultsRow from "../../components/searchResultsRow/index.js";
+import SearchResultsRow from "../../components/searchResultsRow";
 
 //css
 import "./styles.css";

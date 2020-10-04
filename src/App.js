@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-
 //css
 import "./App.css";
 
 //screens
-import Search from "./screens/search/index.js";
-import Report from "./screens/report/index.js";
+import Search from "./screens/search";
+import Report from "./screens/report";
+
+//data
+import { booksData } from './assets/booksData';
+
 
 class App extends Component {
     constructor(props) {
@@ -15,6 +18,9 @@ class App extends Component {
         this.state = {
            
         }
+    }
+    componentDidMount() {
+        console.log(booksData);
     }
 
     render() {
