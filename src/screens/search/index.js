@@ -34,11 +34,27 @@ class Search extends Component {
 		const filter = event.target.value;
 		this.props.filterChanged(filter);
 
+		const filterArr = filter.trim().split(" ");
 		const reports = this.props.reduxData.reports;
 		const ids = [];
 		for(let i = 0; i < reports.length; i++) {
 			const report = reports[i];
-			if(report.content.toLowerCase().includes(filter.toLowerCase()) || report.title.toLowerCase().includes(filter.toLowerCase())) {
+			let match = true;
+			for(let i = 0; i < filterArr.length; i++) {
+				let str = filterArr[i].toLowerCase();
+				if(str.startsWith("-")) {
+					str = str.substring(1, str.length);
+					if(report.content.toLowerCase().includes(str)) {
+						match = false;
+					}
+				}
+				else {
+					if(!report.content.toLowerCase().includes(str) && !report.title.toLowerCase().includes(str)) {
+						match = false;
+					} 
+				}
+			}
+			if(match) {
 				ids.push(report.id);
 			}
 		}

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { filterChanged, tagsChanged } from '../../actions';
 
@@ -57,6 +58,7 @@ class Report extends Component {
 				}
 			}
 		});
+		ReactDOM.findDOMNode(this.refs.focus).focus();
 	}
 
 	componentDidUpdate() {
@@ -64,6 +66,7 @@ class Report extends Component {
 		for(let tag of tags) {
 			tag.addEventListener('dragstart', this.dragStartEvent);
 		}
+		ReactDOM.findDOMNode(this.refs.focus).focus();
 	}
 
 	dragStartEvent = (e) => {
@@ -159,7 +162,7 @@ class Report extends Component {
     	const filter = this.props.reduxData.filter;
 
         return(
-            <div id="report" tabIndex="0">
+            <div id="report" tabIndex="-1" ref="focus">
             	<div className="arrowContainer">
             		<div className="arrow" onClick={this.prevReportClick}>&#10094;</div>
             	</div>
