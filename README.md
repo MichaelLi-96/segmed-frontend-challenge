@@ -9,7 +9,7 @@ GMail for Medical Reports. The React based application will enable customers to 
 * Tags are saved on the front end using redux as a state management tool.
 * While on a full report screen with a active query, users are able to press the previous and next buttons to to move along the constrained search reports.
 
-#### Color Pallete
+### Color Pallete
 
 | Color               |  Hex                                                               |
 | ------------------- | ------------------------------------------------------------------ |
