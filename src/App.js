@@ -8,10 +8,6 @@ import "./App.css";
 import Search from "./screens/search";
 import Report from "./screens/report";
 
-//data
-import { booksData } from './assets/booksData';
-
-
 class App extends Component {
     constructor(props) {
         super(props);
@@ -20,7 +16,7 @@ class App extends Component {
         }
     }
     componentDidMount() {
-        console.log(booksData);
+
     }
 
     render() {

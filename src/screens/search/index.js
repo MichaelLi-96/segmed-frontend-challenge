@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { MdSearch } from "react-icons/md";
+import { connect } from 'react-redux';
+import { filterChanged } from '../../actions';
 
 //components
 import SearchResultsRow from "../../components/searchResultsRow";
@@ -20,11 +22,32 @@ class Search extends Component {
 	}
 
 	renderResults = () => {
-		return <div>test</div>
+		const reports = this.props.reduxData.reports;
+		const filter = this.props.reduxData.filter;
+		const results = [];
+		let count = 0;
+		for(let i = 0; i < reports.length; i++) {
+			const report = reports[i];
+			if(report.content.toLowerCase().includes(filter.toLowerCase()) || report.title.toLowerCase().includes(filter.toLowerCase())) {
+				results.push(
+					<SearchResultsRow
+						key={report.id}
+						odd={count % 2 !== 0}
+						id={report.id}
+						title={report.title}
+						intro={report.intro}
+						tags={report.tags}
+					/>
+				)
+
+				count++;
+			}
+		}
+		return results;
 	}
 
 	handleChange = (event) => {
-		this.setState({ filterString: event.target.value });
+		this.props.filterChanged(event.target.value);
 	}
 
     render() {
@@ -40,10 +63,7 @@ class Search extends Component {
 						<div id="searchResultsReportText">Report Text</div>
 					</div>
 					<div className="searchResultsList">
-						<SearchResultsRow />
-						<SearchResultsRow even={true} />
-						<SearchResultsRow />
-						<SearchResultsRow even={true} />
+						{this.renderResults()}
 					</div>
 				</div>
             </div>
@@ -51,4 +71,10 @@ class Search extends Component {
     }
 }
 
-export default Search;
+const mapStateToProps = state => ({ 
+	reduxData: state.reduxData
+});
+
+export default connect(mapStateToProps, { 
+	filterChanged
+})(Search);

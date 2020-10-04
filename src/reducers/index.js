@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
-//import SongChangeReducer from './songChangeReducer';
+import AppReducer from './appReducer';
 
 export default combineReducers({
-	
+	reduxData: AppReducer,
 });
 

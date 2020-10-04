@@ -8,26 +8,42 @@ import Tag from "../tag";
 import "./styles.css";
 
 class searchResultsRow extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			
+
+	componentDidMount() {
+		const searchResultsRow = document.getElementById(`searchResultsRow${this.props.id}`);
+		if(this.props.odd === true) {
+			searchResultsRow.style.backgroundColor = "#e6e6e6";
 		}
 	}
 
-	componentDidMount() {
-
+	renderTags = () => {
+		const tags = this.props.tags;
+		const results = [];
+		for(let i = 0; i < tags.length; i++) {
+			results.push(
+				<Tag
+					label="#good"
+				/>
+			)
+		}
+		return results;
 	}
 
     render() {
+    	const { 
+            id,
+            title,
+            intro
+        } = this.props;
+
         return(
-            <div className="searchResultsRow">
-				<div className="searchResultsRowId">1</div>
+            <div id={`searchResultsRow${this.props.id}`} className="searchResultsRow" >
+				<div className="searchResultsRowId">{id}</div>
 				<Link className="searchResultsRowTitle" to="/report">
-					<div className="searchResultsRowTitleText">TitleTitleTitleTitleTitle</div>
+					<div className="searchResultsRowTitleText">{title}</div>
 				</Link>
 				<Link className="searchResultsRowTextContainer" to="/report">
-					<div className="searchResultsRowText">Lorem Ipsum &quot;is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+					<div className="searchResultsRowText">{intro}</div>
             	</Link>
             	<div className="searchResultsRowTags">
             		<Tag label="#good" />
