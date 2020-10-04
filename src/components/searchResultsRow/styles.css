@@ -1,0 +1,42 @@
+.searchResultsRow {
+	background-color: white;
+	display: flex;
+	flex-direction: row;
+	min-height: 50px;
+	font-size: 20px;
+	padding: 5px 10px 5px 10px;
+}
+
+.searchResultsRowId {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 10%;
+	flex-wrap: wrap;
+	font-size: 20px;
+}
+
+.searchResultsRowTextContainer {
+	display: flex;
+	align-items: center;
+	width: 64%;
+	padding-left: 1%;
+	padding-right: 1%;
+}
+
+.searchResultsRowText {
+	display: block;
+	width: 100%;
+	font-size: 20px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.searchResultsRowTags {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 25%;
+	flex-wrap: wrap;
+}
