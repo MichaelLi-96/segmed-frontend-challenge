@@ -88,3 +88,7 @@
 	font-size: 26px;
 	width: 95%;
 }
+
+#searchResultsList {
+	width: 100%;
+}

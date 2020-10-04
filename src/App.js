@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { connect } from 'react-redux';
+import { reportsChanged } from './actions';
+import { reportsData } from './assets/reportsData';
 
 //css
 import "./App.css";
@@ -9,14 +12,12 @@ import Search from "./screens/search";
 import Report from "./screens/report";
 
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-           
-        }
-    }
     componentDidMount() {
-
+        const initialReports = [];
+        for(let i = 1; i <= reportsData.length; i++) {
+            initialReports.push(i);
+        }
+        this.props.reportsChanged(initialReports);
     }
 
     render() {
@@ -34,4 +35,10 @@ class App extends Component {
     }
 }
 
-export default App;
+const mapStateToProps = state => ({ 
+    reduxData: state.reduxData
+});
+
+export default connect(mapStateToProps, { 
+    reportsChanged
+})(App);

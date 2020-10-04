@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MdSearch } from "react-icons/md";
 import { connect } from 'react-redux';
-import { filterChanged } from '../../actions';
+import { filterChanged, reportsChanged } from '../../actions';
 
 //components
 import SearchResultsRow from "../../components/searchResultsRow";
@@ -10,59 +10,54 @@ import SearchResultsRow from "../../components/searchResultsRow";
 import "./styles.css";
 
 class Search extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			filterString: '',
-		}
-	}
-
-	componentDidMount() {
-
-	}
-
 	renderResults = () => {
 		const reports = this.props.reduxData.reports;
-		const filter = this.props.reduxData.filter;
+		const currentReports = this.props.reduxData.currentReports;
 		const results = [];
-		let count = 0;
-		for(let i = 0; i < reports.length; i++) {
-			const report = reports[i];
-			if(report.content.toLowerCase().includes(filter.toLowerCase()) || report.title.toLowerCase().includes(filter.toLowerCase())) {
-				results.push(
-					<SearchResultsRow
-						key={report.id}
-						odd={count % 2 !== 0}
-						id={report.id}
-						title={report.title}
-						intro={report.intro}
-						tags={report.tags}
-					/>
-				)
-
-				count++;
-			}
+		for(let i = 0; i < currentReports.length; i++) {
+			const report = reports[currentReports[i] - 1];
+			results.push(
+				<SearchResultsRow
+					key={report.id}
+					id={report.id}
+					title={report.title}
+					intro={report.intro}
+					tags={report.tags}
+				/>
+			);
 		}
+
 		return results;
 	}
 
 	handleChange = (event) => {
-		this.props.filterChanged(event.target.value);
+		const filter = event.target.value;
+		this.props.filterChanged(filter);
+
+		const reports = this.props.reduxData.reports;
+		const ids = [];
+		for(let i = 0; i < reports.length; i++) {
+			const report = reports[i];
+			if(report.content.toLowerCase().includes(filter.toLowerCase()) || report.title.toLowerCase().includes(filter.toLowerCase())) {
+				ids.push(report.id);
+			}
+		}
+		this.props.reportsChanged(ids);
 	}
 
     render() {
         return(
             <div id="search">
 				<div id="searchBarContainer">
-					<input type="text" id="searchBarInput" onChange={this.handleChange} placeholder="Search.." autoComplete="off" maxLength={50} />
+					<input type="text" id="searchBarInput" onChange={this.handleChange} placeholder="Search.." autoComplete="off" maxLength={50} value={this.props.reduxData.filter} />
 					<MdSearch id="searchIcon" />
 				</div>
 				<div id="searchResultsContainer">
 					<div id="searchResultsHeader">
 						<div id="searchResultsId">ID</div>
-						<div id="searchResultsReportText">Report Text</div>
+						<div id="searchResultsReportText">Report Info</div>
 					</div>
-					<div className="searchResultsList">
+					<div id="searchResultsList">
 						{this.renderResults()}
 					</div>
 				</div>
@@ -76,5 +71,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(mapStateToProps, { 
-	filterChanged
+	filterChanged,
+	reportsChanged
 })(Search);

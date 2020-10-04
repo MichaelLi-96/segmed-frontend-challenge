@@ -107,6 +107,7 @@
 	width: 66%;
 	padding-left: 2%;
 	padding-right: 2%;
+	white-space: pre-line;
 }
 
 #reportInfoTags {

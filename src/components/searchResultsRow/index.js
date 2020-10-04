@@ -8,14 +8,6 @@ import Tag from "../tag";
 import "./styles.css";
 
 class searchResultsRow extends Component {
-
-	componentDidMount() {
-		const searchResultsRow = document.getElementById(`searchResultsRow${this.props.id}`);
-		if(this.props.odd === true) {
-			searchResultsRow.style.backgroundColor = "#e6e6e6";
-		}
-	}
-
 	renderTags = () => {
 		const tags = this.props.tags;
 		const results = [];
@@ -37,12 +29,28 @@ class searchResultsRow extends Component {
         } = this.props;
 
         return(
-            <div id={`searchResultsRow${this.props.id}`} className="searchResultsRow" >
+            <div className="searchResultsRow">
 				<div className="searchResultsRowId">{id}</div>
-				<Link className="searchResultsRowTitle" to="/report">
+				<Link
+					className="searchResultsRowTitle" 
+					to={{
+						pathname: "/report",
+						state: {
+							id: this.props.id
+						}
+					}}
+				>
 					<div className="searchResultsRowTitleText">{title}</div>
 				</Link>
-				<Link className="searchResultsRowTextContainer" to="/report">
+				<Link
+					className="searchResultsRowTextContainer" 
+					to={{
+						pathname: "/report",
+						state: {
+							id: this.props.id
+						}
+					}}
+				>
 					<div className="searchResultsRowText">{intro}</div>
             	</Link>
             	<div className="searchResultsRowTags">
