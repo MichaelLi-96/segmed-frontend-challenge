@@ -3,7 +3,7 @@
 GMail for Medical Reports. The React based application will enable customers to search through reports for specific words and also for words which are excluded from the reports.
 
 ### Functionality
-* Users can search for substrings that exist in the reports and exclude reports that contain specific substrings by starting the substring with "**-**" (Multiple substring queries must be seperated by **" | "**).
+* Users can search for substrings that exist in the reports and exclude reports that contain specific substrings by starting the substring with **"-"** (Multiple substring queries must be seperated by **" | "**).
 * Users can view report information as rows after typing in their query in the search bar and read full reports displayed on another screen.
 * On the full report screen, users are able to toggle tags active and unactive using mouse clicks, drop and drag, and keyboard inputs.
 * Tags are saved on the front end using redux as a state management tool.
