@@ -34,7 +34,11 @@ class Search extends Component {
 		const filter = event.target.value;
 		this.props.filterChanged(filter);
 
-		const filterArr = filter.trim().split(" ");
+		let trimmedFilter = filter.trim();
+		if(trimmedFilter.charAt(trimmedFilter.length - 1) === "|") {
+			trimmedFilter = trimmedFilter.substring(0, trimmedFilter.length - 1).trim();
+		}
+		const filterArr = trimmedFilter.split(" | ");
 		const reports = this.props.reduxData.reports;
 		const ids = [];
 		for(let i = 0; i < reports.length; i++) {
